@@ -33,7 +33,8 @@ const Model = mongoose.model('schema', schema);
 let bot = new Discord.Client({
 	autorun: true,
 	email: process.env.email,
-	password: process.env.password
+  password: process.env.password,
+  token: ""
 });
 
 bot.on('ready', function() {
