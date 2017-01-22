@@ -30,16 +30,18 @@ const schema = new mongoose.Schema({
 
 const Model = mongoose.model('schema', schema);
 
-const bot = new Discord.Client({
+let bot = new Discord.Client({
 	autorun: true,
 	email: process.env.email,
 	password: process.env.password
 });
-console.log(process.env.email);
-console.log(process.env.password);
-console.log(bot.connected);
+
+bot.on('ready', function() {
+  console.log("connected");
+});
+
 bot.on('message', function(user, userID, channelID, message, rawEvent) {
-	console.log("hi");
+	
 	if (!message || message.length === 0) return;
 	
 	if (message[0] === OPENER) {
