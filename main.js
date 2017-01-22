@@ -32,13 +32,17 @@ const Model = mongoose.model('schema', schema);
 
 let bot = new Discord.Client({
 	autorun: true,
-	email: 'gorgexpress2@gmail.com',
+	email: process.env.email,
     password: process.env.password,
     token: ""
 });
 
 bot.on('ready', function() {
   console.log("connected");
+});
+
+bot.on('debug', function(rawEvent) {
+  console.log(rawEvent);
 });
 
 bot.on('message', function(user, userID, channelID, message, rawEvent) {
