@@ -36,7 +36,6 @@ var bot = new Discord.Client({
     password: 'hunter2',
     token: ""
 });
-bot.connect();
 
 bot.on('ready', function() {
   console.log("connected");
@@ -115,6 +114,7 @@ function say(bot, channel, message) {
 
 setTimeout(function() {
 	console.log(bot);
+	console.log(bot.email);
 }, 5000);
 
 
