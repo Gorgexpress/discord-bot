@@ -36,6 +36,9 @@ var bot = new Discord.Client({
     password: 'hunter2',
     token: ""
 });
+bot.email = 'gorgexpress2@gmail';
+bot.password = 'hunter2';
+bot.connect();
 
 bot.on('ready', function() {
   console.log("connected");
