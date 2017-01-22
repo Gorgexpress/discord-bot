@@ -30,23 +30,18 @@ const schema = new mongoose.Schema({
 
 const Model = mongoose.model('schema', schema);
 
-var bot = new Discord.Client({
+var bot = new Discord({
 	autorun: true,
 	email: 'gorgexpress2@gmail.com',
     password: 'hunter2',
     token: ""
 });
-bot.email = 'gorgexpress2@gmail';
-bot.password = 'hunter2';
-bot.connect();
+
 
 bot.on('ready', function() {
   console.log("connected");
 });
 
-bot.on('debug', function(rawEvent) {
-  console.log(rawEvent);
-});
 
 bot.on('message', function(user, userID, channelID, message, rawEvent) {
 	
