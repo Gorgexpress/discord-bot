@@ -35,9 +35,11 @@ const bot = new Discord.Client({
 	email: process.env.email,
 	password: process.env.password
 });
+console.log(process.env.email);
 console.log(process.env.password);
 console.log(bot.connected);
 bot.on('message', function(user, userID, channelID, message, rawEvent) {
+	console.log("hi");
 	if (!message || message.length === 0) return;
 	
 	if (message[0] === OPENER) {
