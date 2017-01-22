@@ -10,7 +10,7 @@ let verbose = false //does nothing right now
 
 mongoose.connect(process.env.MONGODB_URI)
 
-const Discord = require('discord.io');
+var Discord = require('discord.io');
 
 //Cache with recent commands in insertion order. 
 //When size is exceeded, we delete the first element in insertion order
