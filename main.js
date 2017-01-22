@@ -36,6 +36,7 @@ var bot = new Discord.Client({
     password: 'hunter2',
     token: ""
 });
+bot.connect();
 
 bot.on('ready', function() {
   console.log("connected");
