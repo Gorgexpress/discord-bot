@@ -10,7 +10,7 @@ let verbose = false //does nothing right now
 
 mongoose.connect(process.env.MONGODB_URI)
 
-const client = require('discord.io');
+const Discord = require('discord.io');
 
 //Cache with recent commands in insertion order. 
 //When size is exceeded, we delete the first element in insertion order
@@ -30,7 +30,7 @@ const schema = new mongoose.Schema({
 
 const Model = mongoose.model('schema', schema);
 
-const bot = new DiscordClient({
+const bot = new Discord.Client({
 	autorun: true,
 	email: process.env.email,
 	password: process.env.password
@@ -39,7 +39,7 @@ const bot = new DiscordClient({
 bot.on('message', function(user, userID, channelID, message, rawEvent) {
 	if (!message || message.length === 0) return;
 	
-	if (message[0] === OPENER]) {
+	if (message[0] === OPENER) {
 		let closeIndex = message.indexOf(CLOSER)
 		if (closeIndex <= 1 || closeIndex !== message.length - CLOSER.length) 
 			return;
