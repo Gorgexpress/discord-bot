@@ -54,10 +54,8 @@ bot.on('message', function(user, userID, channelID, message, rawEvent) {
 			say(bot, channelID, cache.get(key));
 		}
 		else {
-			console.log(key);
 			Model.findOne({'text': key }, function(err, data) {
 				if (err || !data) return;
-				console.log(data);
 				say(bot, channelID, data.response);
 				if (cache.size > CACHE_SIZE) 
 					cache.delete(cache.keys().next().value)
