@@ -56,6 +56,7 @@ bot.on('message', function(user, userID, channelID, message, rawEvent) {
 		else {
 			Model.findOne({'text': key }, function(err, data) {
 				if (err) return;
+				console.log(data);
 				say(bot, channelID, data.response);
 				if (cache.size > CACHE_SIZE) 
 					cache.delete(cache.keys().next().value)
@@ -98,7 +99,7 @@ bot.on('disconnect', function(erMsg, code) {
       clearInterval(handle);
     else
       bot.connect();
-  }, 5000);
+  }, 15000);
 });
 
 function say(bot, channel, message) {
@@ -108,9 +109,5 @@ function say(bot, channel, message) {
 	});
 }
 
-setTimeout(function() {
-	console.log(bot);
-	console.log(bot.email);
-}, 5000);
 
 
