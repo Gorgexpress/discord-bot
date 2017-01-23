@@ -49,7 +49,7 @@ bot.on('message', function(user, userID, channelID, message, rawEvent) {
 		let closeIndex = message.indexOf(CLOSER)
 		if (closeIndex <= 1 || closeIndex !== message.length - CLOSER.length) 
 			return;
-		let key = message.substr(OPENER.length, message.length - CLOSER.length).toLowerCase();
+		let key = message.substr(OPENER.length, message.length - CLOSER.length - 1).toLowerCase();
 		if (cache.has(key)) {
 			say(bot, channelID, cache.get(key));
 		}
