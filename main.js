@@ -30,7 +30,7 @@ const schema = new mongoose.Schema({
 
 const Model = mongoose.model('schema', schema);
 
-var bot = new Discord({
+var bot = new Discord.Client({
 	autorun: true,
     token: process.env.token
 });
@@ -54,8 +54,9 @@ bot.on('message', function(user, userID, channelID, message, rawEvent) {
 			say(bot, channelID, cache.get(key));
 		}
 		else {
+			console.log(key);
 			Model.findOne({'text': key }, function(err, data) {
-				if (err) return;
+				if (err || !data) return;
 				console.log(data);
 				say(bot, channelID, data.response);
 				if (cache.size > CACHE_SIZE) 
