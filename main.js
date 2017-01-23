@@ -4,6 +4,8 @@ const REGISTER_CMD = "^register" //string used to indicated a register command
 const RESPOND_CMD = false //not used currently. String used to indicate a command to output a saved response
 const OPENER = '[' //indicates start of text
 const CLOSER = ']' //indicates close of text
+const KEY_MAX_SIZE = 30;
+const RESPONSE_MAX_SIZE = 150;
 const CACHE_SIZE = 50; //size of cache. I'm sure it won't ever be an issue though.
 
 let verbose = false //does nothing right now
@@ -74,12 +76,18 @@ bot.on('message', function(user, userID, channelID, message, rawEvent) {
 		if(closeIndex <= index)
 			return;
 		let key = message.substring(index + 1, closeIndex).toLowerCase();
+		if (key.length > KEY_MAX_SIZE)
+			return say(bot, channelID, "Max size of a key is " + KEY_MAX_SIZE + " characters");
 		if(cache.has(key))
-			return;
+			return say(bot, channelID, "Key already registered"");
 		index = closeIndex + 1;
 		if (message[index] !== " " || index === message.length - 1)
 			return;
 		let response = message.substring(index + 1);
+		if (response.indexOf("<@") !== -1)
+			return say(bot, channelID, "You cannot register responses that ping other uses.");
+		if (response.length > RESPONSE_MAX_SIZE)
+			return say(bot, channelID, "Max size of a response is " + RESPONSE_MAX_SIZE + " characters");
 		let newResponse = new Model({'text': key, 'response': response});
 		newResponse.save( function(err) {
 			if(err)
