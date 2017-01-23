@@ -32,9 +32,7 @@ const Model = mongoose.model('schema', schema);
 
 var bot = new Discord({
 	autorun: true,
-	email: 'gorgexpress2@gmail.com',
-    password: 'hunter2',
-    token: ""
+    token: process.env.token
 });
 
 
