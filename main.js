@@ -61,7 +61,7 @@ bot.on('message', function(user, userID, channelID, message, rawEvent) {
 				say(bot, channelID, data.response);
 				if (cache.size > CACHE_SIZE) 
 					cache.delete(cache.keys().next().value)
-				cache.set(key, data);
+				cache.set(key, data.response);
 			});
 		}	
 	}
