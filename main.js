@@ -82,14 +82,14 @@ bot.on('message', function(user, userID, channelID, message, rawEvent) {
 		if (message[index] !== " " || index === message.length - 1)
 			return;
 		let response = message.substring(index + 1);
-		let newResponse = new Model({'text': text, 'response': response});
+		let newResponse = new Model({'text': key, 'response': response});
 		newResponse.save( function(err) {
 			if(err)
 				return;
 			say(bot, channelID, key + " successfully added!");
 			if (cache.size > CACHE_SIZE) 
 				cache.delete(cache.keys().next().value)
-			cache.set(key, data);
+			cache.set(key, response);
 		});
 	}
 });
