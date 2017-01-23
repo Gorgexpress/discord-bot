@@ -79,7 +79,7 @@ bot.on('message', function(user, userID, channelID, message, rawEvent) {
 		if (key.length > KEY_MAX_SIZE)
 			return say(bot, channelID, "Max size of a key is " + KEY_MAX_SIZE + " characters");
 		if(cache.has(key))
-			return say(bot, channelID, "Key already registered"");
+			return say(bot, channelID, "Key already registered");
 		index = closeIndex + 1;
 		if (message[index] !== " " || index === message.length - 1)
 			return;
