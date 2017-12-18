@@ -101,6 +101,7 @@ bot.on('message', function(user, userID, channelID, message, rawEvent) {
 });
 
 bot.on('disconnect', function(erMsg, code) {
+  console.log(erMsg);
   let handle = setInterval( function() {
     if (bot.connected)
       clearInterval(handle);

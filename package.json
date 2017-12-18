@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.io": "^2.4.2",
+    "discord.io": "github:woor/discord.io#gateway_v6",
     "mongoose": "^4.7.7"
   }
 }
